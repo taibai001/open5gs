@@ -433,14 +433,14 @@ bool ogs_sockaddr_is_equal(const void *p, const void *q)
 
     switch (a->ogs_sa_family) {
     case AF_INET:
-        if (a->sin.sin_port != b->sin.sin_port)
-            return false;
+        // if (a->sin.sin_port != b->sin.sin_port)
+        //     return false;
         if (memcmp(&a->sin.sin_addr, &b->sin.sin_addr, sizeof(struct in_addr)) != 0)
             return false;
         return true;
     case AF_INET6:
-        if (a->sin6.sin6_port != b->sin6.sin6_port)
-            return false;
+        // if (a->sin6.sin6_port != b->sin6.sin6_port)
+        //     return false;
         if (memcmp(&a->sin6.sin6_addr, &b->sin6.sin6_addr, sizeof(struct in6_addr)) != 0)
             return false;
         return true;
