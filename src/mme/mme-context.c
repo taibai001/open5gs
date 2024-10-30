@@ -3632,6 +3632,11 @@ mme_ue_t *mme_ue_find_by_id(ogs_pool_id_t id)
     return ogs_pool_find_by_id(&mme_ue_pool, id);
 }
 
+mme_ue_t *mme_ue_find(uint32_t index)
+{
+    return ogs_pool_find(&mme_ue_pool, index);
+}
+
 void mme_ue_fsm_init(mme_ue_t *mme_ue)
 {
     mme_event_t e;

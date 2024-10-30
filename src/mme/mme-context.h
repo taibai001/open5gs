@@ -967,6 +967,7 @@ enb_ue_t *enb_ue_find_by_mme_ue_s1ap_id(uint32_t mme_ue_s1ap_id);
 enb_ue_t *enb_ue_find_by_id(ogs_pool_id_t id);
 
 sgw_ue_t *sgw_ue_add(mme_sgw_t *sgw);
+mme_ue_t *mme_ue_find(uint32_t index);
 void sgw_ue_remove(sgw_ue_t *sgw_ue);
 void sgw_ue_switch_to_sgw(sgw_ue_t *sgw_ue, mme_sgw_t *new_sgw);
 sgw_ue_t *sgw_ue_find_by_id(ogs_pool_id_t id);

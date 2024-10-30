@@ -811,6 +811,9 @@ cleanup:
                 xact, mme_ue,
                 &gtp_message.bearer_resource_failure_indication);
             break;
+        case OGS_GTP2_PGW_RESTART_NOTIFICATION_TYPE:
+            mme_s11_handle_pgw_restart_notification(xact, mme_ue, &gtp_message.pgw_restart_notification);
+            break;
         default:
             ogs_warn("Not implemented(type:%d)", gtp_message.h.type);
             break;

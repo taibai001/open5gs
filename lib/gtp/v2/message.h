@@ -1290,6 +1290,16 @@ typedef struct ogs_gtp2_modify_access_bearers_request_s {
     ogs_gtp2_tlv_pscell_id_t pscell_id;
 } ogs_gtp2_modify_access_bearers_request_t;
 
+typedef struct ogs_gtp2_pgw_restart_notification_s {
+    ogs_gtp2_tlv_ip_address_t pgw_s5_s8_ip_address_for_control_plane_or_pmip;
+    ogs_gtp2_tlv_ip_address_t sgw_s11_s4_ip_address_for_control_plane;
+    ogs_gtp2_tlv_cause_t cause;
+} ogs_gtp2_pgw_restart_notification_t;
+
+typedef struct ogs_gtp2_pgw_restart_notification_acknowledge_s {
+    ogs_gtp2_tlv_cause_t cause;
+} ogs_gtp2_pgw_restart_notification_acknowledge_t;
+
 typedef struct ogs_gtp2_modify_access_bearers_response_s {
     ogs_gtp2_tlv_cause_t cause;
     ogs_gtp2_tlv_bearer_context_t bearer_contexts_modified;
@@ -1332,6 +1342,8 @@ typedef struct ogs_gtp2_message_s {
         ogs_gtp2_release_access_bearers_response_t release_access_bearers_response;
         ogs_gtp2_downlink_data_notification_t downlink_data_notification;
         ogs_gtp2_downlink_data_notification_acknowledge_t downlink_data_notification_acknowledge;
+        ogs_gtp2_pgw_restart_notification_t pgw_restart_notification;
+        ogs_gtp2_pgw_restart_notification_acknowledge_t pgw_restart_notification_acknowledge;
         ogs_gtp2_modify_access_bearers_request_t modify_access_bearers_request;
         ogs_gtp2_modify_access_bearers_response_t modify_access_bearers_response;
    };

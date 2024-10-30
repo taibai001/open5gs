@@ -395,6 +395,8 @@ msg_list["Release Access Bearers Request"]["table"] = 86
 msg_list["Release Access Bearers Response"]["table"] = 87
 msg_list["Modify Access Bearers Request"]["table"] = 91
 msg_list["Modify Access Bearers Response"]["table"] = 94
+msg_list["PGW Restart Notification"]["table"] = 154
+msg_list["PGW Restart Notification Acknowledge"]["table"] = 155
 
 for key in msg_list.keys():
     if "table" in msg_list[key].keys():

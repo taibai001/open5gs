@@ -2051,3 +2051,33 @@ void mme_s11_handle_bearer_resource_failure_indication(
         mme_bearer_remove(bearer);
     }
 }
+
+void mme_s11_handle_pgw_restart_notification(
+ogs_gtp_xact_t *xact, mme_ue_t *mme_ue,
+ogs_gtp2_pgw_restart_notification_t *noti) {
+    ogs_assert(xact);
+    ogs_assert(noti);
+
+    ogs_debug("Receiving PGW Restart Notification");
+
+    for (uint32_t i = 1;; i++) {
+        mme_ue_t *ue = mme_ue_find(i);
+        if (ue == NULL) {
+            break;
+        }
+        ue->nas_eps.detach.value = OGS_NAS_DETACH_TYPE_TO_UE_RE_ATTACH_REQUIRED;
+
+        char imsi[50];
+        memset(imsi, 0, sizeof(imsi));
+        strcpy(imsi, (const char *) ue->imsi);
+        ogs_debug("Send Detach Request to UE: %s", imsi);
+
+        nas_eps_send_detach_request(ue);
+    }
+}
+
+void mme_s11_handle_pgw_restart_notification_acknowledge(
+ogs_gtp_xact_t *xact, mme_ue_t *mme_ue,
+ogs_gtp2_pgw_restart_notification_acknowledge_t *ack) {
+    /* Not Implemented */
+}

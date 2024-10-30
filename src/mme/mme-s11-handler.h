@@ -66,6 +66,14 @@ void mme_s11_handle_bearer_resource_failure_indication(
         ogs_gtp_xact_t *xact, mme_ue_t *mme_ue,
         ogs_gtp2_bearer_resource_failure_indication_t *ind);
 
+void mme_s11_handle_pgw_restart_notification(
+        ogs_gtp_xact_t *xact, mme_ue_t *mme_ue,
+        ogs_gtp2_pgw_restart_notification_t *noti);
+
+void mme_s11_handle_pgw_restart_notification_acknowledge(
+        ogs_gtp_xact_t *xact, mme_ue_t *mme_ue,
+        ogs_gtp2_pgw_restart_notification_acknowledge_t *ack);
+
 #ifdef __cplusplus
 }
 #endif

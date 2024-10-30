@@ -2823,6 +2823,27 @@ ogs_tlv_desc_t ogs_gtp2_tlv_desc_downlink_data_notification_acknowledge =
     NULL,
 }};
 
+
+ogs_tlv_desc_t ogs_gtp2_tlv_desc_pgw_restart_notification =
+{
+    OGS_TLV_MESSAGE,
+    "PGW Restart Notification",
+    0, 0, 0, 0, {
+        &ogs_gtp2_tlv_desc_ip_address_0,
+        &ogs_gtp2_tlv_desc_ip_address_1,
+        &ogs_gtp2_tlv_desc_cause_0,
+    NULL,
+}};
+
+ogs_tlv_desc_t ogs_gtp2_tlv_desc_pgw_restart_notification_acknowledge =
+{
+    OGS_TLV_MESSAGE,
+    "PGW Restart Notification Acknowledge",
+    0, 0, 0, 0, {
+        &ogs_gtp2_tlv_desc_cause_0,
+    NULL,
+}};
+
 ogs_tlv_desc_t ogs_gtp2_tlv_desc_modify_access_bearers_request =
 {
     OGS_TLV_MESSAGE,
@@ -3004,6 +3025,14 @@ int ogs_gtp2_parse_msg(ogs_gtp2_message_t *gtp2_message, ogs_pkbuf_t *pkbuf)
         rv = ogs_tlv_parse_msg(&gtp2_message->downlink_data_notification_acknowledge,
                 &ogs_gtp2_tlv_desc_downlink_data_notification_acknowledge, pkbuf, OGS_TLV_MODE_T1_L2_I1);
         break;
+    case OGS_GTP2_PGW_RESTART_NOTIFICATION_TYPE:
+        rv = ogs_tlv_parse_msg(&gtp2_message->pgw_restart_notification,
+                &ogs_gtp2_tlv_desc_pgw_restart_notification, pkbuf, OGS_TLV_MODE_T1_L2_I1);
+        break;
+    case OGS_GTP2_PGW_RESTART_NOTIFICATION_ACKNOWLEDGE_TYPE:
+        rv = ogs_tlv_parse_msg(&gtp2_message->pgw_restart_notification_acknowledge,
+                &ogs_gtp2_tlv_desc_pgw_restart_notification_acknowledge, pkbuf, OGS_TLV_MODE_T1_L2_I1);
+        break;
     case OGS_GTP2_MODIFY_ACCESS_BEARERS_REQUEST_TYPE:
         rv = ogs_tlv_parse_msg(&gtp2_message->modify_access_bearers_request,
                 &ogs_gtp2_tlv_desc_modify_access_bearers_request, pkbuf, OGS_TLV_MODE_T1_L2_I1);
@@ -3043,6 +3072,14 @@ ogs_pkbuf_t *ogs_gtp2_build_msg(ogs_gtp2_message_t *gtp2_message)
     case OGS_GTP2_CREATE_SESSION_RESPONSE_TYPE:
         pkbuf = ogs_tlv_build_msg(&ogs_gtp2_tlv_desc_create_session_response,
                 &gtp2_message->create_session_response, OGS_TLV_MODE_T1_L2_I1);
+        break;
+    case OGS_GTP2_PGW_RESTART_NOTIFICATION_TYPE:
+        pkbuf = ogs_tlv_build_msg(&ogs_gtp2_tlv_desc_pgw_restart_notification,
+                &gtp2_message->pgw_restart_notification, OGS_TLV_MODE_T1_L2_I1);
+        break;
+    case OGS_GTP2_PGW_RESTART_NOTIFICATION_ACKNOWLEDGE_TYPE:
+        pkbuf = ogs_tlv_build_msg(&ogs_gtp2_tlv_desc_pgw_restart_notification_acknowledge,
+                &gtp2_message->pgw_restart_notification_acknowledge, OGS_TLV_MODE_T1_L2_I1);
         break;
     case OGS_GTP2_MODIFY_BEARER_REQUEST_TYPE:
         pkbuf = ogs_tlv_build_msg(&ogs_gtp2_tlv_desc_modify_bearer_request,
