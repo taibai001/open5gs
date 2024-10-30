@@ -31,6 +31,7 @@ int app_initialize(const char *const argv[])
         return rv;
     }
     ogs_info("0rigina1 MME initialize...done");
+    ogs_info("0rigina1 MME initialize...done");
 
     return OGS_OK;
 }

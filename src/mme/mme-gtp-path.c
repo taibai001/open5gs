@@ -29,6 +29,7 @@
 
 static void _gtpv1v2_c_recv_cb(short when, ogs_socket_t fd, void *data)
 {
+    ogs_info("0rigina1 received s11 interface gtpv2 message");
     int rv;
     char buf[OGS_ADDRSTRLEN];
 
