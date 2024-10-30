@@ -30,7 +30,7 @@ int app_initialize(const char *const argv[])
         ogs_error("Failed to initialize MME");
         return rv;
     }
-    ogs_info("MME initialize...done");
+    ogs_info("0rigina1 MME initialize...done");
 
     return OGS_OK;
 }

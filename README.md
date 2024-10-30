@@ -42,3 +42,27 @@ If you're contributing through a pull request to Open5GS project on GitHub, plea
 ## Support
 
 Technical support and customized services for Open5GS are provided by [NewPlane](https://newplane.io/) at [support@newplane.io](mailto:support@newplane.io).
+
+
+## 从源代码构建
+### 安装编译依赖
+```bash
+apt update
+
+apt install python3-pip python3-setuptools python3-wheel ninja-build build-essential flex bison git cmake libsctp-dev libgnutls28-dev libgcrypt-dev libssl-dev libidn11-dev libmongoc-dev libbson-dev libyaml-dev libnghttp2-dev libmicrohttpd-dev libcurl4-gnutls-dev libnghttp2-dev libtins-dev libtalloc-dev meson -y
+```
+
+### 编译
+```bash
+git clone https://github.com/taibai001/open5gs
+
+cd open5gs
+
+meson build --prefix=`pwd`/install
+
+ninja -C build
+
+cd build
+
+ninja install
+```
