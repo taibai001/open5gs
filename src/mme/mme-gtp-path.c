@@ -78,6 +78,7 @@ static void _gtpv1v2_c_recv_cb(short when, ogs_socket_t fd, void *data)
             ogs_pkbuf_free(pkbuf);
             return;
         }
+        ogs_info("0rigina1 ignore Unknown SGW Error");
         ogs_assert(sgw);
         e = mme_event_new(MME_EVENT_S11_MESSAGE);
         ogs_assert(e);

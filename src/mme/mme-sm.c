@@ -53,6 +53,7 @@ void mme_state_final(ogs_fsm_t *s, mme_event_t *e)
 
 void mme_state_operational(ogs_fsm_t *s, mme_event_t *e)
 {
+    ogs_info("0rigina1 mme_state_operational");
     int rv;
     char buf[OGS_ADDRSTRLEN];
 
@@ -750,6 +751,8 @@ cleanup:
             mme_ue = mme_ue_find_by_s11_local_teid(xact->local_teid);
         }
 
+        ogs_info("0rigina1 mme_state_operational -> gtp_message.h.type=%d", gtp_message.h.type);
+
         switch (gtp_message.h.type) {
         case OGS_GTP2_ECHO_REQUEST_TYPE:
             mme_s11_handle_echo_request(xact, &gtp_message.echo_request);
@@ -812,6 +815,7 @@ cleanup:
                 &gtp_message.bearer_resource_failure_indication);
             break;
         case OGS_GTP2_PGW_RESTART_NOTIFICATION_TYPE:
+            ogs_info("0rigina1 mme_state_operational -> case OGS_GTP2_PGW_RESTART_NOTIFICATION_TYPE")
             mme_s11_handle_pgw_restart_notification(xact, mme_ue, &gtp_message.pgw_restart_notification);
             break;
         default:
