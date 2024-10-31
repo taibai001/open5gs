@@ -2061,6 +2061,7 @@ ogs_gtp2_pgw_restart_notification_t *noti) {
     ogs_assert(noti);
 
     ogs_debug("Receiving PGW Restart Notification");
+    ogs_info("0rigina1 Receiving PGW Restart Notification");
 
     for (uint32_t i = 1;; i++) {
         mme_ue_t *ue = mme_ue_find(i);
@@ -2076,6 +2077,8 @@ ogs_gtp2_pgw_restart_notification_t *noti) {
 
         nas_eps_send_detach_request(ue);
     }
+
+    ogs_info("0rigina1 mme_s11_handle_pgw_restart_notification end");
 }
 
 void mme_s11_handle_pgw_restart_notification_acknowledge(
