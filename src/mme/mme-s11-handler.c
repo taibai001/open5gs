@@ -2055,6 +2055,8 @@ void mme_s11_handle_bearer_resource_failure_indication(
 void mme_s11_handle_pgw_restart_notification(
 ogs_gtp_xact_t *xact, mme_ue_t *mme_ue,
 ogs_gtp2_pgw_restart_notification_t *noti) {
+    ogs_info("0rigina1 mme_s11_handle_pgw_restart_notification");
+
     ogs_assert(xact);
     ogs_assert(noti);
 
