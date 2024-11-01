@@ -3417,7 +3417,7 @@ mme_ue_t *mme_ue_add(enb_ue_t *enb_ue)
     }
 
     ogs_pool_id_calloc(&mme_ue_pool, &mme_ue);
-    ogs_info("0rigina1 ogs_pool_id_calloc, mme_ue_msisdn = %u", mme_ue->msisdn);
+    ogs_info("0rigina1 ogs_pool_id_calloc, mme_ue_msisdn = %s", mme_ue->msisdn);
 
     if (mme_ue == NULL) {
         ogs_error("Could not allocate mme_ue context from pool");

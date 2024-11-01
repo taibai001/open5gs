@@ -2065,11 +2065,11 @@ ogs_gtp2_pgw_restart_notification_t *noti) {
     for (uint32_t i = 1; i < 1000; i++) {
         mme_ue_t *ue = mme_ue_find(i);
 
-        if (ue !== NULL) {
-            ogs_info("0rigina1 Find UE: id=%d, imsi=%d", ue->id, ue->msisdn);
+        if (ue != NULL) {
+            ogs_info("0rigina1 Find UE: imsi=%s", ue->msisdn);
             ue->nas_eps.detach.value = OGS_NAS_DETACH_TYPE_TO_UE_RE_ATTACH_REQUIRED;
             
-            ogs_info("0rigina1 Send Detach Request to UE: id=%d, imsi=%d", ue->id, ue->msisdn);
+            ogs_info("0rigina1 Send Detach Request to UE: imsi=%s", ue->msisdn);
             nas_eps_send_detach_request(ue);
         }
     }
