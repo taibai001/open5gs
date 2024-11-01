@@ -3400,6 +3400,8 @@ static mme_sgw_t *changed_sgw_node(mme_sgw_t *current, enb_ue_t *enb_ue)
 
 mme_ue_t *mme_ue_add(enb_ue_t *enb_ue)
 {
+    ogs_info("0rigina1 mme_ue_add, enb_ue_id = %d", enb_ue->enb_id);
+    
     mme_enb_t *enb = NULL;
     mme_ue_t *mme_ue = NULL;
     sgw_ue_t *sgw_ue = NULL;
@@ -3415,6 +3417,8 @@ mme_ue_t *mme_ue_add(enb_ue_t *enb_ue)
     }
 
     ogs_pool_id_calloc(&mme_ue_pool, &mme_ue);
+    ogs_info("0rigina1 ogs_pool_id_calloc, mme_ue_msisdn = %u", mme_ue->msisdn);
+
     if (mme_ue == NULL) {
         ogs_error("Could not allocate mme_ue context from pool");
         return NULL;
@@ -3634,6 +3638,12 @@ mme_ue_t *mme_ue_find_by_id(ogs_pool_id_t id)
 
 mme_ue_t *mme_ue_find(uint32_t index)
 {
+    ogs_info("0rigina1 mme_ue_find");
+
+    unsigned int mme_ue_pool_size = ogs_pool_size(&mme_ue_pool);
+
+    ogs_info("0rigina1 mme_ue_pool_size = %u", mme_ue_pool_size);
+
     return ogs_pool_find(&mme_ue_pool, index);
 }
 
