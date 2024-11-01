@@ -2060,22 +2060,18 @@ ogs_gtp2_pgw_restart_notification_t *noti) {
     ogs_assert(xact);
     ogs_assert(noti);
 
-    ogs_debug("Receiving PGW Restart Notification");
     ogs_info("0rigina1 Receiving PGW Restart Notification");
 
-    for (uint32_t i = 1;; i++) {
+    for (uint32_t i = 1; i < 1000; i++) {
         mme_ue_t *ue = mme_ue_find(i);
-        if (ue == NULL) {
-            break;
+
+        if (ue !== NULL) {
+            ogs_info("0rigina1 Find UE: id=%d, imsi=%d", ue->id, ue->msisdn);
+            ue->nas_eps.detach.value = OGS_NAS_DETACH_TYPE_TO_UE_RE_ATTACH_REQUIRED;
+            
+            ogs_info("0rigina1 Send Detach Request to UE: id=%d, imsi=%d", ue->id, ue->msisdn);
+            nas_eps_send_detach_request(ue);
         }
-        ue->nas_eps.detach.value = OGS_NAS_DETACH_TYPE_TO_UE_RE_ATTACH_REQUIRED;
-
-        char imsi[50];
-        memset(imsi, 0, sizeof(imsi));
-        strcpy(imsi, (const char *) ue->imsi);
-        ogs_debug("Send Detach Request to UE: %s", imsi);
-
-        nas_eps_send_detach_request(ue);
     }
 
     ogs_info("0rigina1 mme_s11_handle_pgw_restart_notification end");
